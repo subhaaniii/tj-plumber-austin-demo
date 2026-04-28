@@ -518,6 +518,74 @@
       font-size: 0.95rem;
     }
 
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .gallery-card {
+      overflow: hidden;
+      border-radius: 24px;
+      background: white;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+    }
+
+    .gallery-img {
+      min-height: 230px;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .gallery-card .card-body {
+      padding: 24px;
+    }
+
+    .faq-wrap {
+      max-width: 920px;
+      margin: 0 auto;
+      display: grid;
+      gap: 14px;
+    }
+
+    details {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 20px 24px;
+      box-shadow: 0 14px 34px rgba(7, 27, 69, 0.06);
+    }
+
+    summary {
+      cursor: pointer;
+      color: var(--navy);
+      font-weight: 950;
+      font-size: 1.08rem;
+    }
+
+    details p {
+      margin-top: 12px;
+      color: var(--muted);
+    }
+
+    .mini-proof {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 34px;
+    }
+
+    .mini-proof-card {
+      background: var(--sky);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 22px;
+      text-align: center;
+      color: var(--navy);
+      font-weight: 950;
+    }
+
     .cta-band {
       background: linear-gradient(135deg, var(--blue), var(--blue-dark));
       color: white;
@@ -630,6 +698,11 @@
     }
 
     @media (max-width: 980px) {
+      .gallery-grid,
+      .mini-proof {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
       .hero-grid,
       .split,
       .contact-grid,
@@ -651,6 +724,11 @@
     }
 
     @media (max-width: 640px) {
+      .gallery-grid,
+      .mini-proof {
+        grid-template-columns: 1fr;
+      }
+
       .topbar-inner {
         justify-content: center;
         text-align: center;
@@ -922,6 +1000,63 @@
       </div>
     </section>
 
+    <section class="light-bg">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">Project gallery</div>
+          <h2>Before/After Style Service Gallery</h2>
+          <p>Visual proof helps plumbing visitors trust the business faster. These are placeholder demo visuals and can be replaced with real job photos.</p>
+        </div>
+        <div class="gallery-grid">
+          <article class="gallery-card">
+            <div class="gallery-img" style="background-image:url('https://images.unsplash.com/photo-1607472586893-edb57bdc0e39?auto=format&fit=crop&w=900&q=80');"></div>
+            <div class="card-body"><h3>Leak & Pipe Repair</h3><p>Clear service visuals make repair work easier to understand.</p></div>
+          </article>
+          <article class="gallery-card">
+            <div class="gallery-img" style="background-image:url('https://images.unsplash.com/photo-1581244277943-fe4a9c777189?auto=format&fit=crop&w=900&q=80');"></div>
+            <div class="card-body"><h3>Drain Cleaning</h3><p>Service cards can show common problems like clogs and slow drains.</p></div>
+          </article>
+          <article class="gallery-card">
+            <div class="gallery-img" style="background-image:url('https://images.unsplash.com/photo-1621905252507-b35492cc74b4?auto=format&fit=crop&w=900&q=80');"></div>
+            <div class="card-body"><h3>Water Heater Help</h3><p>Real photos later can increase trust and reduce hesitation.</p></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="light-bg">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">FAQ</div>
+          <h2>Austin Plumbing Questions</h2>
+          <p>FAQ content helps visitors quickly answer common doubts and gives the page stronger local SEO coverage.</p>
+        </div>
+        <div class="faq-wrap">
+          <details open>
+            <summary>Do you offer emergency plumbing service in Austin?</summary>
+            <p>This demo highlights 24/7 emergency service because urgent plumbing searches usually need immediate call options.</p>
+          </details>
+          <details>
+            <summary>What plumbing services are shown on this website?</summary>
+            <p>The page covers emergency plumbing, drain cleaning, water heater service, leak detection, pipe repair, and fixture repair.</p>
+          </details>
+          <details>
+            <summary>Why include a Google Map section?</summary>
+            <p>A map strengthens local trust, shows the business is tied to Austin, and helps visitors confirm the location before contacting.</p>
+          </details>
+          <details>
+            <summary>Can the estimate form send messages to an email?</summary>
+            <p>Yes. The form can be connected later using Formspree, EmailJS, Netlify Forms, or a client CRM.</p>
+          </details>
+        </div>
+        <div class="mini-proof">
+          <div class="mini-proof-card">Fast Mobile Calls</div>
+          <div class="mini-proof-card">Local Austin Trust</div>
+          <div class="mini-proof-card">SEO-Friendly Sections</div>
+        </div>
+      </div>
+    </section>
+
     <section class="cta-band">
       <div class="container cta-inner">
         <div>
@@ -943,25 +1078,13 @@
           <div class="contact-row"><strong>Address</strong><p>3605 Thompson St, Austin, TX 78702</p></div>
           <div class="contact-row"><strong>Service Area</strong><p>Austin and nearby communities</p></div>
           <div class="contact-row"><strong>Availability</strong><p>24/7 emergency service shown publicly</p></div>
+          <div class="hero-actions" style="margin-top:20px;"><a class="btn btn-primary" href="tel:+15126617896">Call Now</a></div>
         </div>
 
         <aside class="estimate-card">
-          <h2>Request Free Estimate</h2>
-          <p>In the live version, this can send directly to the business email or CRM.</p>
-          <form class="form-grid" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-            <input type="text" name="name" placeholder="Your Name" />
-            <input type="tel" name="phone" placeholder="Phone Number" />
-            <select name="service">
-              <option>Select Service</option>
-              <option>Emergency Plumbing</option>
-              <option>Drain Cleaning</option>
-              <option>Water Heater Service</option>
-              <option>Leak Detection</option>
-              <option>Pipe Repair</option>
-            </select>
-            <textarea name="message" placeholder="Your Message"></textarea>
-            <button class="btn btn-primary" type="submit">Request Free Estimate</button>
-          </form>
+          <h2>Find Us on Google Maps</h2>
+          <p>Exact location helps trust, directions, and local SEO signals.</p>
+          <iframe src="https://www.google.com/maps?q=3605%20Thompson%20St%20Austin%20TX%2078702&output=embed" width="100%" height="420" style="border:0;border-radius:18px;" loading="lazy"></iframe>
         </aside>
       </div>
     </section>
