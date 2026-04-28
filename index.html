@@ -3,16 +3,34 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TJ Plumber Austin | Demo Website</title>
+  <meta name="description" content="Demo redesign concept for TJ Plumber Austin. Emergency plumbing, drain cleaning, water heater service, leak detection, and pipe repair in Austin, Texas." />
+  <title>TJ Plumber Austin | Pro Demo Website</title>
+
   <style>
+    /*
+      ============================
+      EASY EDIT ZONE
+      ============================
+      To update this website often:
+      1. Search for PHONE, ADDRESS, OFFER, REVIEWS, SERVICES below.
+      2. Change visible text only.
+      3. Save as index.html.
+      4. Upload/commit to GitHub. Site updates in 1-2 minutes.
+    */
+
     :root {
-      --navy: #17377a;
-      --blue: #12a8e8;
-      --dark: #0f172a;
-      --text: #334155;
-      --light: #f8fafc;
+      --navy: #102f73;
+      --navy-dark: #071b45;
+      --blue: #10aee8;
+      --blue-dark: #0786bd;
+      --sky: #eaf8ff;
+      --text: #243044;
+      --muted: #64748b;
+      --light: #f7fbff;
       --white: #ffffff;
-      --border: #e2e8f0;
+      --border: #dbe7f3;
+      --shadow: 0 20px 45px rgba(7, 27, 69, 0.12);
+      --radius: 24px;
     }
 
     * {
@@ -21,8 +39,12 @@
       box-sizing: border-box;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
-      font-family: Arial, Helvetica, sans-serif;
+      font-family: Inter, Arial, Helvetica, sans-serif;
       color: var(--text);
       background: var(--white);
       line-height: 1.6;
@@ -33,58 +55,86 @@
       color: inherit;
     }
 
-    .topbar {
-      background: var(--blue);
-      color: white;
-      padding: 12px 5%;
-      display: flex;
-      justify-content: space-between;
-      gap: 16px;
-      flex-wrap: wrap;
-      font-weight: 700;
+    img {
+      max-width: 100%;
+      display: block;
     }
 
-    .navbar {
-      background: white;
-      padding: 18px 5%;
+    .container {
+      width: min(1180px, 90%);
+      margin: 0 auto;
+    }
+
+    .topbar {
+      background: var(--navy-dark);
+      color: white;
+      font-size: 0.95rem;
+    }
+
+    .topbar-inner {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border-bottom: 1px solid var(--border);
+      gap: 16px;
+      padding: 10px 0;
+      flex-wrap: wrap;
+      font-weight: 800;
+    }
+
+    .notice {
+      background: var(--blue);
+      color: white;
+      text-align: center;
+      padding: 10px 5%;
+      font-weight: 900;
+      letter-spacing: 0.01em;
+    }
+
+    .navbar {
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(16px);
       position: sticky;
       top: 0;
-      z-index: 10;
-      box-shadow: 0 2px 12px rgba(15, 23, 42, 0.06);
+      z-index: 50;
+      border-bottom: 1px solid var(--border);
+      box-shadow: 0 10px 30px rgba(7, 27, 69, 0.06);
+    }
+
+    .nav-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 0;
+      gap: 24px;
     }
 
     .logo {
       display: flex;
       align-items: center;
       gap: 12px;
-      font-size: 1.55rem;
-      font-weight: 900;
       color: var(--navy);
-      letter-spacing: -0.03em;
+      font-size: 1.55rem;
+      font-weight: 950;
+      letter-spacing: -0.04em;
     }
 
     .logo-mark {
-      width: 42px;
-      height: 42px;
-      border-radius: 12px;
-      background: var(--blue);
-      color: white;
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
       display: grid;
       place-items: center;
-      font-size: 1.4rem;
+      background: linear-gradient(135deg, var(--blue), var(--blue-dark));
+      color: white;
+      box-shadow: 0 14px 28px rgba(16, 174, 232, 0.28);
     }
 
     .navlinks {
       display: flex;
-      gap: 26px;
       align-items: center;
-      font-weight: 700;
+      gap: 24px;
+      font-weight: 850;
       color: var(--navy);
-      font-size: 0.95rem;
     }
 
     .btn {
@@ -92,76 +142,93 @@
       align-items: center;
       justify-content: center;
       gap: 8px;
-      border-radius: 12px;
+      border-radius: 15px;
       padding: 15px 24px;
-      font-weight: 800;
+      font-weight: 950;
       border: 2px solid transparent;
       cursor: pointer;
       transition: 0.2s ease;
-    }
-
-    .btn-primary {
-      background: var(--blue);
-      color: white;
-      box-shadow: 0 12px 22px rgba(18, 168, 232, 0.25);
-    }
-
-    .btn-secondary {
-      background: white;
-      color: var(--navy);
-      border-color: var(--navy);
+      white-space: nowrap;
     }
 
     .btn:hover {
       transform: translateY(-2px);
     }
 
+    .btn-primary {
+      background: linear-gradient(135deg, var(--blue), var(--blue-dark));
+      color: white;
+      box-shadow: 0 16px 28px rgba(16, 174, 232, 0.24);
+    }
+
+    .btn-outline {
+      background: white;
+      color: var(--navy);
+      border-color: var(--border);
+      box-shadow: 0 10px 20px rgba(7, 27, 69, 0.06);
+    }
+
     .hero {
-      min-height: 720px;
+      position: relative;
+      overflow: hidden;
       background:
-        linear-gradient(90deg, rgba(23, 55, 122, 0.96), rgba(23, 55, 122, 0.74)),
-        url('https://images.unsplash.com/photo-1607472586893-edb57bdc0e39?auto=format&fit=crop&w=1600&q=80');
+        radial-gradient(circle at top left, rgba(16, 174, 232, 0.25), transparent 34%),
+        linear-gradient(90deg, rgba(7, 27, 69, 0.98), rgba(16, 47, 115, 0.84)),
+        url('https://images.unsplash.com/photo-1607472586893-edb57bdc0e39?auto=format&fit=crop&w=1800&q=80');
       background-size: cover;
       background-position: center;
       color: white;
+      padding: 76px 0 44px;
+    }
+
+    .hero-grid {
       display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 44px;
-      padding: 80px 5%;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 48px;
       align-items: center;
     }
 
-    .offer {
-      display: inline-block;
+    .offer-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
       background: var(--blue);
       color: white;
-      padding: 13px 26px;
+      padding: 12px 22px;
       border-radius: 999px;
-      font-weight: 900;
-      margin-bottom: 24px;
+      font-weight: 950;
+      margin-bottom: 22px;
+      box-shadow: 0 12px 30px rgba(16, 174, 232, 0.26);
     }
 
     .hero h1 {
-      font-size: clamp(2.8rem, 6vw, 5.5rem);
-      line-height: 1.02;
-      letter-spacing: -0.06em;
+      font-size: clamp(3rem, 7vw, 5.8rem);
+      line-height: 0.98;
+      letter-spacing: -0.07em;
       max-width: 760px;
       margin-bottom: 22px;
     }
 
     .hero p {
-      font-size: 1.35rem;
+      font-size: 1.28rem;
+      color: #dff5ff;
       max-width: 650px;
       margin-bottom: 26px;
-      color: #e0f2fe;
     }
 
-    .checks {
+    .hero-proof {
       display: grid;
-      gap: 10px;
+      gap: 12px;
       margin-bottom: 32px;
-      font-size: 1.05rem;
-      font-weight: 700;
+      font-weight: 850;
+      color: #f8fdff;
+    }
+
+    .hero-proof span::before {
+      content: "✓";
+      color: var(--blue);
+      font-weight: 950;
+      margin-right: 8px;
     }
 
     .hero-actions {
@@ -172,140 +239,188 @@
 
     .estimate-card {
       background: white;
-      color: var(--dark);
-      border-radius: 22px;
+      color: var(--text);
+      border-radius: 28px;
       padding: 34px;
-      box-shadow: 0 24px 50px rgba(15, 23, 42, 0.25);
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.24);
+      border: 1px solid rgba(255,255,255,0.45);
     }
 
     .estimate-card h2 {
       color: var(--navy);
       font-size: 2rem;
+      line-height: 1.15;
+      margin-bottom: 8px;
+      letter-spacing: -0.04em;
+    }
+
+    .estimate-card p {
+      color: var(--muted);
+      font-size: 1rem;
       margin-bottom: 20px;
     }
 
     .form-grid {
       display: grid;
-      gap: 16px;
+      gap: 14px;
     }
 
     input, select, textarea {
       width: 100%;
-      padding: 17px 18px;
+      padding: 16px 17px;
       border: 1px solid var(--border);
-      border-radius: 12px;
+      border-radius: 14px;
       font-size: 1rem;
       font-family: inherit;
+      color: var(--text);
+      background: white;
     }
 
     textarea {
-      min-height: 130px;
+      min-height: 118px;
       resize: vertical;
     }
 
-    section {
-      padding: 84px 5%;
-    }
-
-    .section-title {
-      text-align: center;
-      max-width: 760px;
-      margin: 0 auto 48px;
-    }
-
-    .section-title h2 {
-      color: var(--navy);
-      font-size: clamp(2.2rem, 4vw, 4rem);
-      line-height: 1.1;
-      letter-spacing: -0.04em;
-      margin-bottom: 14px;
-    }
-
-    .section-title p {
-      font-size: 1.15rem;
-    }
-
     .trust-strip {
-      background: var(--light);
-      padding: 26px 5%;
+      transform: translateY(-26px);
+      margin-bottom: -26px;
+    }
+
+    .trust-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 18px;
-      border-bottom: 1px solid var(--border);
+      gap: 16px;
     }
 
     .trust-item {
       background: white;
-      padding: 20px;
-      border-radius: 16px;
-      text-align: center;
-      font-weight: 900;
-      color: var(--navy);
       border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 22px 16px;
+      text-align: center;
+      font-weight: 950;
+      color: var(--navy);
+      box-shadow: var(--shadow);
     }
 
-    .services-grid, .why-grid, .reviews-grid {
+    section {
+      padding: 88px 0;
+    }
+
+    .section-head {
+      max-width: 760px;
+      margin: 0 auto 46px;
+      text-align: center;
+    }
+
+    .eyebrow {
+      color: var(--blue-dark);
+      font-weight: 950;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      font-size: 0.82rem;
+      margin-bottom: 10px;
+    }
+
+    .section-head h2,
+    .split h2 {
+      color: var(--navy);
+      font-size: clamp(2.3rem, 4.5vw, 4.2rem);
+      line-height: 1.05;
+      letter-spacing: -0.055em;
+      margin-bottom: 14px;
+    }
+
+    .section-head p,
+    .split p {
+      color: var(--muted);
+      font-size: 1.13rem;
+    }
+
+    .grid-3 {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 26px;
+      gap: 22px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 28px;
     }
 
     .card {
       background: white;
       border: 1px solid var(--border);
-      border-radius: 22px;
-      padding: 34px;
-      box-shadow: 0 18px 35px rgba(15, 23, 42, 0.06);
+      border-radius: var(--radius);
+      padding: 32px;
+      box-shadow: 0 18px 42px rgba(7, 27, 69, 0.07);
+    }
+
+    .service-card {
+      min-height: 255px;
+      transition: 0.2s ease;
+    }
+
+    .service-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(16, 174, 232, 0.45);
+      box-shadow: 0 24px 60px rgba(7, 27, 69, 0.12);
     }
 
     .icon {
       width: 58px;
       height: 58px;
-      border-radius: 16px;
-      background: #e0f2fe;
-      color: var(--blue);
+      border-radius: 18px;
+      background: var(--sky);
       display: grid;
       place-items: center;
-      font-size: 1.8rem;
+      font-size: 1.7rem;
       margin-bottom: 22px;
     }
 
     .card h3 {
       color: var(--navy);
-      font-size: 1.45rem;
+      font-size: 1.42rem;
       line-height: 1.2;
       margin-bottom: 12px;
+      letter-spacing: -0.025em;
     }
 
-    .about {
+    .light-bg {
       background: var(--light);
+    }
+
+    .split {
       display: grid;
-      grid-template-columns: 0.9fr 1.1fr;
-      gap: 48px;
+      grid-template-columns: 0.92fr 1.08fr;
+      gap: 52px;
       align-items: center;
     }
 
-    .about-img {
-      min-height: 430px;
-      border-radius: 26px;
-      background: url('https://images.unsplash.com/photo-1621905251918-48416bd8575a?auto=format&fit=crop&w=1200&q=80') center/cover;
-      box-shadow: 0 24px 55px rgba(15, 23, 42, 0.16);
-    }
-
-    .about h2 {
-      color: var(--navy);
-      font-size: clamp(2.2rem, 4vw, 4rem);
-      line-height: 1.08;
-      letter-spacing: -0.04em;
-      margin-bottom: 20px;
+    .image-panel {
+      min-height: 460px;
+      border-radius: 32px;
+      background:
+        linear-gradient(180deg, rgba(7, 27, 69, 0.05), rgba(7, 27, 69, 0.18)),
+        url('https://images.unsplash.com/photo-1621905252507-b35492cc74b4?auto=format&fit=crop&w=1200&q=80') center/cover;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
     }
 
     .bullet-list {
       display: grid;
-      gap: 14px;
+      gap: 13px;
       margin: 24px 0 30px;
-      font-weight: 700;
-      color: var(--dark);
+      color: var(--text);
+      font-weight: 850;
+    }
+
+    .bullet-list span::before {
+      content: "✓";
+      color: var(--blue-dark);
+      margin-right: 10px;
+      font-weight: 950;
     }
 
     .process {
@@ -313,33 +428,55 @@
       color: white;
     }
 
-    .process .section-title h2, .process .section-title p {
+    .process .section-head h2,
+    .process .section-head p,
+    .process .eyebrow {
       color: white;
     }
 
     .process-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 22px;
+      gap: 18px;
     }
 
     .step {
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.16);
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 24px;
       padding: 28px;
-      border-radius: 20px;
     }
 
     .step-num {
       width: 54px;
       height: 54px;
-      border-radius: 999px;
       background: var(--blue);
+      border-radius: 999px;
       display: grid;
       place-items: center;
+      font-weight: 950;
       font-size: 1.4rem;
-      font-weight: 900;
       margin-bottom: 18px;
+    }
+
+    .areas {
+      background: var(--white);
+    }
+
+    .area-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+    }
+
+    .area-pill {
+      background: var(--sky);
+      color: var(--navy);
+      padding: 12px 18px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      font-weight: 900;
     }
 
     .reviews {
@@ -347,136 +484,210 @@
     }
 
     .stars {
-      color: var(--blue);
-      font-size: 1.2rem;
+      color: var(--blue-dark);
       letter-spacing: 3px;
+      font-size: 1.15rem;
       margin-bottom: 18px;
     }
 
     .reviewer {
+      display: flex;
+      align-items: center;
+      gap: 12px;
       margin-top: 22px;
-      font-weight: 900;
       color: var(--navy);
+      font-weight: 950;
     }
 
-    .cta {
-      background: var(--blue);
+    .avatar {
+      width: 42px;
+      height: 42px;
+      border-radius: 999px;
+      background: var(--navy);
       color: white;
       display: grid;
+      place-items: center;
+      font-weight: 950;
+    }
+
+    .review-note {
+      max-width: 820px;
+      margin: 24px auto 0;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .cta-band {
+      background: linear-gradient(135deg, var(--blue), var(--blue-dark));
+      color: white;
+      padding: 70px 0;
+    }
+
+    .cta-inner {
+      display: grid;
       grid-template-columns: 1fr auto;
-      gap: 28px;
+      gap: 30px;
       align-items: center;
     }
 
-    .cta h2 {
-      font-size: clamp(2rem, 4vw, 4rem);
-      line-height: 1.1;
-      letter-spacing: -0.04em;
-      margin-bottom: 10px;
+    .cta-inner h2 {
+      font-size: clamp(2.3rem, 5vw, 4.8rem);
+      line-height: 1.02;
+      letter-spacing: -0.06em;
+      margin-bottom: 12px;
+    }
+
+    .cta-inner p {
+      font-size: 1.16rem;
+      color: #effcff;
     }
 
     .contact {
-      display: grid;
-      grid-template-columns: 0.9fr 1.1fr;
-      gap: 34px;
       background: white;
     }
 
-    .contact-info {
-      background: var(--navy);
-      color: white;
-      border-radius: 24px;
-      padding: 38px;
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 0.92fr 1.08fr;
+      gap: 28px;
     }
 
-    .contact-info h2 {
-      font-size: 2.3rem;
+    .contact-panel {
+      background: var(--navy);
+      color: white;
+      border-radius: 28px;
+      padding: 38px;
+      box-shadow: var(--shadow);
+    }
+
+    .contact-panel h2 {
+      font-size: 2.2rem;
+      line-height: 1.15;
       margin-bottom: 22px;
     }
 
     .contact-row {
-      margin: 22px 0;
+      margin: 24px 0;
     }
 
     .contact-row strong {
       display: block;
-      font-size: 1.1rem;
+      font-size: 1.08rem;
       margin-bottom: 4px;
+      color: #e0f2fe;
     }
 
     footer {
-      background: var(--navy);
+      background: var(--navy-dark);
       color: white;
-      padding: 56px 5% 24px;
+      padding: 54px 0 26px;
     }
 
     .footer-grid {
       display: grid;
-      grid-template-columns: 1.2fr 1fr 1fr 1fr;
-      gap: 32px;
-      margin-bottom: 38px;
+      grid-template-columns: 1.25fr 1fr 1fr 1fr;
+      gap: 36px;
+      margin-bottom: 34px;
     }
 
     footer h3 {
-      font-size: 1.35rem;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
+      font-size: 1.25rem;
     }
 
     footer p, footer li {
       color: #dbeafe;
-      margin: 8px 0;
       list-style: none;
+      margin: 8px 0;
     }
 
     .copyright {
-      text-align: center;
+      border-top: 1px solid rgba(255, 255, 255, 0.16);
       padding-top: 22px;
-      border-top: 1px solid rgba(255,255,255,0.2);
+      text-align: center;
       color: #dbeafe;
+      font-size: 0.95rem;
     }
 
     .sticky-call {
       position: fixed;
-      right: 22px;
-      bottom: 22px;
+      right: 24px;
+      bottom: 24px;
       background: var(--blue);
       color: white;
+      padding: 15px 24px;
       border-radius: 999px;
-      padding: 16px 22px;
-      font-weight: 900;
-      box-shadow: 0 18px 35px rgba(15, 23, 42, 0.22);
-      z-index: 20;
+      font-weight: 950;
+      box-shadow: 0 20px 45px rgba(7, 27, 69, 0.25);
+      z-index: 100;
+    }
+
+    .demo-note {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-top: 14px;
     }
 
     @media (max-width: 980px) {
-      .hero, .about, .contact, .cta {
+      .hero-grid,
+      .split,
+      .contact-grid,
+      .cta-inner {
         grid-template-columns: 1fr;
       }
 
-      .services-grid, .why-grid, .reviews-grid, .trust-strip, .process-grid, .footer-grid {
-        grid-template-columns: 1fr 1fr;
+      .grid-3,
+      .grid-2,
+      .trust-grid,
+      .process-grid,
+      .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
       }
 
-      .navlinks {
+      .navlinks a:not(.btn) {
         display: none;
       }
     }
 
     @media (max-width: 640px) {
-      .hero {
-        padding: 58px 6%;
+      .topbar-inner {
+        justify-content: center;
+        text-align: center;
       }
 
-      .services-grid, .why-grid, .reviews-grid, .trust-strip, .process-grid, .footer-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .topbar {
+      .notice {
         font-size: 0.9rem;
       }
 
-      .estimate-card {
+      .nav-inner {
+        align-items: flex-start;
+      }
+
+      .logo {
+        font-size: 1.2rem;
+      }
+
+      .navlinks .btn {
+        padding: 12px 16px;
+      }
+
+      .hero {
+        padding: 52px 0 36px;
+      }
+
+      .estimate-card,
+      .card,
+      .contact-panel {
         padding: 24px;
+      }
+
+      .grid-3,
+      .grid-2,
+      .trust-grid,
+      .process-grid,
+      .footer-grid {
+        grid-template-columns: 1fr;
       }
 
       .sticky-call {
@@ -484,245 +695,311 @@
         right: 16px;
         text-align: center;
       }
+
+      section {
+        padding: 66px 0;
+      }
     }
   </style>
 </head>
+
 <body>
+  <!-- PHONE: (512) 661-7896 | ADDRESS: 3605 Thompson St, Austin, TX 78702 -->
+
   <div class="topbar">
-    <span>☎ Emergency 24/7: (512) 661-7896</span>
-    <span>Serving Austin • 24/7 Emergency Service</span>
-    <span>3605 Thompson St, Austin, TX 78702</span>
+    <div class="container topbar-inner">
+      <span>☎ Emergency 24/7: (512) 661-7896</span>
+      <span>Serving Austin • Fast Local Response</span>
+      <span>3605 Thompson St, Austin, TX 78702</span>
+    </div>
   </div>
 
+  <div class="notice">Austin plumbing help for leaks, clogged drains, water heaters, and urgent repairs.</div>
+
   <header class="navbar">
-    <a href="#" class="logo"><span class="logo-mark">🔧</span> TJ Plumber Austin</a>
-    <nav class="navlinks">
-      <a href="#services">Services</a>
-      <a href="#about">About</a>
-      <a href="#process">Process</a>
-      <a href="#reviews">Reviews</a>
-      <a href="#contact">Contact</a>
-      <a class="btn btn-primary" href="tel:+15126617896">Call Now</a>
-    </nav>
+    <div class="container nav-inner">
+      <a href="#" class="logo"><span class="logo-mark">🔧</span> TJ Plumber Austin</a>
+      <nav class="navlinks" aria-label="Main navigation">
+        <a href="#services">Services</a>
+        <a href="#about">About</a>
+        <a href="#process">Process</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#contact">Contact</a>
+        <a class="btn btn-primary" href="tel:+15126617896">Call Now</a>
+      </nav>
+    </div>
   </header>
 
   <main>
     <section class="hero">
-      <div>
-        <span class="offer">$99 Special Offer - Any Drain Cleaning</span>
-        <h1>Austin’s Trusted Plumbing Experts</h1>
-        <p>Fast response, honest pricing, and dependable 24/7 plumbing service across Austin.</p>
-        <div class="checks">
-          <span>✓ Emergency plumbing support when problems cannot wait</span>
-          <span>✓ Clear communication and fair service-focused pricing</span>
-          <span>✓ Local Austin service for homes and businesses</span>
+      <div class="container hero-grid">
+        <div>
+          <div class="offer-pill">Limited Demo Offer • $99 Drain Cleaning Feature</div>
+          <h1>Austin’s Trusted Plumbing Experts</h1>
+          <p>Fast response, clear communication, and dependable plumbing service across Austin, Texas.</p>
+          <div class="hero-proof">
+            <span>Emergency plumbing support when problems cannot wait</span>
+            <span>Clear service categories for faster customer decisions</span>
+            <span>Click-to-call layout built for mobile visitors</span>
+          </div>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="tel:+15126617896">☎ Call Now</a>
+            <a class="btn btn-outline" href="#contact">Request Free Estimate</a>
+          </div>
         </div>
-        <div class="hero-actions">
-          <a class="btn btn-primary" href="tel:+15126617896">☎ Call Now</a>
-          <a class="btn btn-secondary" href="#contact">Free Estimate</a>
-        </div>
-      </div>
 
-      <aside class="estimate-card">
-        <h2>Get Free Estimate</h2>
-        <form class="form-grid">
-          <input type="text" placeholder="Your Name" />
-          <input type="tel" placeholder="Phone Number" />
-          <select>
-            <option>Select Service</option>
-            <option>Emergency Plumbing</option>
-            <option>Drain Cleaning</option>
-            <option>Water Heater Service</option>
-            <option>Leak Detection</option>
-            <option>Pipe Repair</option>
-          </select>
-          <textarea placeholder="Tell us what happened"></textarea>
-          <button class="btn btn-primary" type="button">Request Free Estimate</button>
-        </form>
-      </aside>
+        <aside class="estimate-card" aria-label="Estimate form">
+          <h2>Get a Free Estimate</h2>
+          <p>Simple, conversion-focused form for service requests.</p>
+          <form class="form-grid" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+            <input type="text" name="name" placeholder="Your Name" />
+            <input type="tel" name="phone" placeholder="Phone Number" />
+            <select name="service">
+              <option>Select Service</option>
+              <option>Emergency Plumbing</option>
+              <option>Drain Cleaning</option>
+              <option>Water Heater Service</option>
+              <option>Leak Detection</option>
+              <option>Pipe Repair</option>
+            </select>
+            <textarea name="message" placeholder="Tell us what happened"></textarea>
+            <button class="btn btn-primary" type="submit">Request Free Estimate</button>
+          </form>
+          <div class="demo-note">Formspree ID can be added later so messages go to your email.</div>
+        </aside>
+      </div>
     </section>
 
     <div class="trust-strip">
-      <div class="trust-item">24/7 Emergency Service</div>
-      <div class="trust-item">Serving Austin, TX</div>
-      <div class="trust-item">Upfront Communication</div>
-      <div class="trust-item">Fast Local Response</div>
+      <div class="container trust-grid">
+        <div class="trust-item">24/7 Emergency Service</div>
+        <div class="trust-item">Serving Austin, TX</div>
+        <div class="trust-item">Clear Communication</div>
+        <div class="trust-item">Fast Local Response</div>
+      </div>
     </div>
 
     <section id="services">
-      <div class="section-title">
-        <h2>Complete Plumbing Services</h2>
-        <p>Practical plumbing help for urgent repairs, routine service, and home comfort.</p>
-      </div>
-      <div class="services-grid">
-        <article class="card">
-          <div class="icon">💧</div>
-          <h3>Emergency Plumbing</h3>
-          <p>Fast help for urgent leaks, overflowing fixtures, burst pipes, and unexpected plumbing issues.</p>
-        </article>
-        <article class="card">
-          <div class="icon">⚙️</div>
-          <h3>Drain Cleaning</h3>
-          <p>Professional drain clearing for kitchen sinks, bathrooms, tubs, main lines, and clogged pipes.</p>
-        </article>
-        <article class="card">
-          <div class="icon">🚿</div>
-          <h3>Water Heater Services</h3>
-          <p>Repair, replacement, and maintenance support for water heater performance and reliability.</p>
-        </article>
-        <article class="card">
-          <div class="icon">🔧</div>
-          <h3>Pipe Repair</h3>
-          <p>Pipe repair and replacement support for residential and commercial plumbing systems.</p>
-        </article>
-        <article class="card">
-          <div class="icon">🚽</div>
-          <h3>Toilet & Fixture Repair</h3>
-          <p>Help with toilets, faucets, garbage disposals, shut-off valves, and everyday plumbing repairs.</p>
-        </article>
-        <article class="card">
-          <div class="icon">🔎</div>
-          <h3>Leak Detection</h3>
-          <p>Find and fix leaks before they become bigger water damage problems inside your property.</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="about" id="about">
-      <div class="about-img" aria-label="Plumbing tools and home repair"></div>
-      <div>
-        <h2>Reliable Austin Plumbing Help Without the Stress</h2>
-        <p>This redesign concept focuses on what customers care about first: quick contact, clear service options, trust, and easy scheduling.</p>
-        <div class="bullet-list">
-          <span>✓ Simple call-first layout for urgent plumbing searches</span>
-          <span>✓ Clear service categories for fast decision-making</span>
-          <span>✓ Strong local positioning for Austin customers</span>
-          <span>✓ Cleaner trust-focused design than an old SEO template</span>
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">Services</div>
+          <h2>Complete Plumbing Services</h2>
+          <p>Focused pages and service cards help homeowners quickly find the exact plumbing help they need.</p>
         </div>
-        <a class="btn btn-primary" href="#contact">Request Service</a>
+
+        <div class="grid-3">
+          <article class="card service-card">
+            <div class="icon">💧</div>
+            <h3>Emergency Plumbing</h3>
+            <p>Fast help for urgent leaks, overflowing fixtures, burst pipes, and unexpected plumbing problems.</p>
+          </article>
+          <article class="card service-card">
+            <div class="icon">⚙️</div>
+            <h3>Drain Cleaning</h3>
+            <p>Drain clearing for sinks, tubs, bathrooms, kitchens, and main-line blockage situations.</p>
+          </article>
+          <article class="card service-card">
+            <div class="icon">🚿</div>
+            <h3>Water Heater Service</h3>
+            <p>Support for water heater repair, replacement, maintenance, and no-hot-water issues.</p>
+          </article>
+          <article class="card service-card">
+            <div class="icon">🔧</div>
+            <h3>Pipe Repair</h3>
+            <p>Repair and replacement support for damaged, leaking, or aging plumbing pipes.</p>
+          </article>
+          <article class="card service-card">
+            <div class="icon">🚽</div>
+            <h3>Toilet & Faucet Repair</h3>
+            <p>Help with toilets, faucets, shut-off valves, garbage disposals, and fixture issues.</p>
+          </article>
+          <article class="card service-card">
+            <div class="icon">🔎</div>
+            <h3>Leak Detection</h3>
+            <p>Find and address leaks before they become costly water damage problems.</p>
+          </article>
+        </div>
       </div>
     </section>
 
-    <section class="process" id="process">
-      <div class="section-title">
-        <h2>Simple Service Process</h2>
-        <p>Clear steps help customers understand what happens after they reach out.</p>
-      </div>
-      <div class="process-grid">
-        <div class="step"><div class="step-num">1</div><h3>Contact Us</h3><p>Call or submit the estimate form.</p></div>
-        <div class="step"><div class="step-num">2</div><h3>Schedule Service</h3><p>Choose a convenient time for support.</p></div>
-        <div class="step"><div class="step-num">3</div><h3>Inspect Issue</h3><p>The plumbing problem is reviewed clearly.</p></div>
-        <div class="step"><div class="step-num">4</div><h3>Get Solution</h3><p>The repair is handled with clear communication.</p></div>
-      </div>
-    </section>
-
-    <section class="why">
-      <div class="section-title">
-        <h2>Why Choose TJ Plumber Austin</h2>
-        <p>A trustworthy website should answer customer doubts before they pick up the phone.</p>
-      </div>
-      <div class="why-grid">
-        <article class="card"><div class="icon">⏱️</div><h3>Fast Response</h3><p>Built for customers who need plumbing help quickly.</p></article>
-        <article class="card"><div class="icon">💬</div><h3>Clear Communication</h3><p>Simple wording, clear CTAs, and no confusing walls of text.</p></article>
-        <article class="card"><div class="icon">🏠</div><h3>Austin Local Focus</h3><p>Address, phone, and service-area copy help build local confidence.</p></article>
-        <article class="card"><div class="icon">📱</div><h3>Mobile Friendly</h3><p>Designed for people searching from phones during urgent situations.</p></article>
-        <article class="card"><div class="icon">⭐</div><h3>Trust-First Layout</h3><p>Reviews, process, and service details reduce hesitation.</p></article>
-        <article class="card"><div class="icon">✅</div><h3>Conversion Focused</h3><p>Multiple call and estimate buttons guide visitors toward action.</p></article>
+    <section id="about" class="light-bg">
+      <div class="container split">
+        <div class="image-panel"></div>
+        <div>
+          <div class="eyebrow">Trust-focused redesign</div>
+          <h2>Built to Turn Plumbing Visitors Into Calls</h2>
+          <p>This version is designed around the way local customers actually behave: they scan quickly, check trust signals, then call or request help.</p>
+          <div class="bullet-list">
+            <span>Cleaner layout than a dense old SEO-template page</span>
+            <span>Phone number and service request options are always easy to find</span>
+            <span>Austin location and service-area details build local relevance</span>
+            <span>Short, direct copy improves trust and reduces confusion</span>
+          </div>
+          <a class="btn btn-primary" href="#contact">Request Service</a>
+        </div>
       </div>
     </section>
 
-    <section class="reviews" id="reviews">
-      <div class="section-title">
-        <h2>Customer Feedback Themes</h2>
-        <p>Review wording below is paraphrased from common positive review themes, not copied word-for-word.</p>
-      </div>
-      <div class="reviews-grid">
-        <article class="card">
-          <div class="stars">★★★★★</div>
-          <p>Customers mention reasonable pricing and helpful service for everyday plumbing needs.</p>
-          <div class="reviewer">Austin Customer</div>
-        </article>
-        <article class="card">
-          <div class="stars">★★★★★</div>
-          <p>Emergency callers appreciate quick response and clear communication when urgent issues happen.</p>
-          <div class="reviewer">Local Homeowner</div>
-        </article>
-        <article class="card">
-          <div class="stars">★★★★★</div>
-          <p>Several customers highlight professional support for water heater, pipe, and drain-related work.</p>
-          <div class="reviewer">Residential Client</div>
-        </article>
+    <section id="process" class="process">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">Process</div>
+          <h2>Simple Service Process</h2>
+          <p>Clear steps reduce hesitation and make the business feel organized.</p>
+        </div>
+        <div class="process-grid">
+          <div class="step"><div class="step-num">1</div><h3>Contact</h3><p>Call or submit the estimate form.</p></div>
+          <div class="step"><div class="step-num">2</div><h3>Schedule</h3><p>Set a convenient service time.</p></div>
+          <div class="step"><div class="step-num">3</div><h3>Inspect</h3><p>The issue is reviewed clearly.</p></div>
+          <div class="step"><div class="step-num">4</div><h3>Repair</h3><p>The solution is explained and handled.</p></div>
+        </div>
       </div>
     </section>
 
-    <section class="cta">
-      <div>
-        <h2>Need Emergency Plumbing Service?</h2>
-        <p>Make it easy for visitors to call the business the moment they land on the page.</p>
-      </div>
-      <div class="hero-actions">
-        <a class="btn btn-secondary" href="tel:+15126617896">Call: (512) 661-7896</a>
-        <a class="btn btn-secondary" href="#contact">Free Estimate</a>
+    <section>
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">Why this works</div>
+          <h2>Designed for Local Plumbing Conversions</h2>
+          <p>Not just pretty design. This layout pushes the visitor toward trust, clarity, and action.</p>
+        </div>
+        <div class="grid-3">
+          <article class="card"><div class="icon">⏱️</div><h3>Fast Response Message</h3><p>Emergency searchers need confidence that help is available quickly.</p></article>
+          <article class="card"><div class="icon">📱</div><h3>Mobile-First Calls</h3><p>Sticky call buttons make it easier to convert mobile traffic into calls.</p></article>
+          <article class="card"><div class="icon">🏠</div><h3>Local Austin Positioning</h3><p>Address, service area, and Austin copy support local trust.</p></article>
+          <article class="card"><div class="icon">⭐</div><h3>Review Themes</h3><p>Customer feedback themes are summarized without risky copy-paste reviews.</p></article>
+          <article class="card"><div class="icon">🧭</div><h3>Simple Navigation</h3><p>Visitors can quickly jump to services, process, reviews, or contact.</p></article>
+          <article class="card"><div class="icon">✅</div><h3>Clear CTAs</h3><p>Call Now and Free Estimate buttons appear exactly where decisions happen.</p></article>
+        </div>
       </div>
     </section>
 
-    <section class="contact" id="contact">
-      <div class="contact-info">
-        <h2>Contact Information</h2>
-        <div class="contact-row"><strong>Phone</strong><p>(512) 661-7896</p></div>
-        <div class="contact-row"><strong>Address</strong><p>3605 Thompson St, Austin, TX 78702</p></div>
-        <div class="contact-row"><strong>Availability</strong><p>24/7 emergency service listed publicly</p></div>
+    <section class="areas">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">Service area</div>
+          <h2>Serving Austin & Nearby Areas</h2>
+          <p>Service-area text helps local visitors recognize that the business serves their neighborhood.</p>
+        </div>
+        <div class="area-grid">
+          <span class="area-pill">Austin</span>
+          <span class="area-pill">East Austin</span>
+          <span class="area-pill">Mueller</span>
+          <span class="area-pill">Hyde Park</span>
+          <span class="area-pill">Travis Heights</span>
+          <span class="area-pill">Round Rock</span>
+          <span class="area-pill">Pflugerville</span>
+          <span class="area-pill">Cedar Park</span>
+        </div>
       </div>
-      <div class="estimate-card">
-        <h2>Request Free Estimate</h2>
-        <form class="form-grid">
-          <input type="text" placeholder="Your Name" />
-          <input type="tel" placeholder="Phone Number" />
-          <select>
-            <option>Select Service</option>
-            <option>Emergency Plumbing</option>
-            <option>Drain Cleaning</option>
-            <option>Water Heater Service</option>
-            <option>Leak Detection</option>
-          </select>
-          <textarea placeholder="Your Message"></textarea>
-          <button class="btn btn-primary" type="button">Request Free Estimate</button>
-        </form>
+    </section>
+
+    <section id="reviews" class="reviews">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">Reviews</div>
+          <h2>Customer Feedback Themes</h2>
+          <p>These are safe, paraphrased trust themes inspired by public review patterns, not direct copied reviews.</p>
+        </div>
+        <div class="grid-3">
+          <article class="card">
+            <div class="stars">★★★★★</div>
+            <p>Customers mention reasonable pricing and helpful service for everyday plumbing needs.</p>
+            <div class="reviewer"><span class="avatar">A</span> Austin Customer</div>
+          </article>
+          <article class="card">
+            <div class="stars">★★★★★</div>
+            <p>Emergency callers appreciate quick response and clear communication during urgent situations.</p>
+            <div class="reviewer"><span class="avatar">E</span> East Austin Homeowner</div>
+          </article>
+          <article class="card">
+            <div class="stars">★★★★★</div>
+            <p>Customers highlight support for water heater, pipe, and drain-related plumbing work.</p>
+            <div class="reviewer"><span class="avatar">R</span> Residential Client</div>
+          </article>
+        </div>
+        <p class="review-note">Final production version can include verified reviews only after client approval or direct review embed.</p>
+      </div>
+    </section>
+
+    <section class="cta-band">
+      <div class="container cta-inner">
+        <div>
+          <h2>Need Emergency Plumbing Service?</h2>
+          <p>Make calling effortless for visitors who need help right now.</p>
+        </div>
+        <div class="hero-actions">
+          <a class="btn btn-outline" href="tel:+15126617896">Call: (512) 661-7896</a>
+          <a class="btn btn-outline" href="#contact">Free Estimate</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact">
+      <div class="container contact-grid">
+        <div class="contact-panel">
+          <h2>Contact Information</h2>
+          <div class="contact-row"><strong>Phone</strong><p>(512) 661-7896</p></div>
+          <div class="contact-row"><strong>Address</strong><p>3605 Thompson St, Austin, TX 78702</p></div>
+          <div class="contact-row"><strong>Service Area</strong><p>Austin and nearby communities</p></div>
+          <div class="contact-row"><strong>Availability</strong><p>24/7 emergency service shown publicly</p></div>
+        </div>
+
+        <aside class="estimate-card">
+          <h2>Request Free Estimate</h2>
+          <p>In the live version, this can send directly to the business email or CRM.</p>
+          <form class="form-grid" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+            <input type="text" name="name" placeholder="Your Name" />
+            <input type="tel" name="phone" placeholder="Phone Number" />
+            <select name="service">
+              <option>Select Service</option>
+              <option>Emergency Plumbing</option>
+              <option>Drain Cleaning</option>
+              <option>Water Heater Service</option>
+              <option>Leak Detection</option>
+              <option>Pipe Repair</option>
+            </select>
+            <textarea name="message" placeholder="Your Message"></textarea>
+            <button class="btn btn-primary" type="submit">Request Free Estimate</button>
+          </form>
+        </aside>
       </div>
     </section>
   </main>
 
   <footer>
-    <div class="footer-grid">
-      <div>
-        <h3>TJ Plumber Austin</h3>
-        <p>A cleaner, conversion-focused website concept for an Austin plumbing service.</p>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h3>TJ Plumber Austin</h3>
+          <p>A cleaner, conversion-focused redesign concept for an Austin plumbing service.</p>
+        </div>
+        <div>
+          <h3>Services</h3>
+          <ul>
+            <li>Emergency Plumbing</li>
+            <li>Drain Cleaning</li>
+            <li>Water Heater Service</li>
+            <li>Pipe Repair</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#process">Process</a></li>
+            <li><a href="#reviews">Reviews</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Call Now</h3>
+          <p>(512) 661-7896</p>
+          <p>3605 Thompson St, Austin, TX 78702</p>
+        </div>
       </div>
-      <div>
-        <h3>Services</h3>
-        <ul>
-          <li>Emergency Plumbing</li>
-          <li>Drain Cleaning</li>
-          <li>Water Heater Services</li>
-          <li>Pipe Repair</li>
-        </ul>
-      </div>
-      <div>
-        <h3>Quick Links</h3>
-        <ul>
-          <li>Services</li>
-          <li>Process</li>
-          <li>Reviews</li>
-          <li>Contact</li>
-        </ul>
-      </div>
-      <div>
-        <h3>Call Now</h3>
-        <p>(512) 661-7896</p>
-        <p>3605 Thompson St, Austin, TX 78702</p>
-      </div>
+      <div class="copyright">© 2026 TJ Plumber Austin Demo Concept. Created for redesign preview purposes.</div>
     </div>
-    <div class="copyright">© 2026 TJ Plumber Austin Demo Concept. Created for redesign preview purposes.</div>
   </footer>
 
   <a class="sticky-call" href="tel:+15126617896">☎ Call Now</a>
